@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import com.webservice.server.bean.Lugar;
@@ -46,10 +47,9 @@ public class LugarDao {
 		}
 	}
 	
-	@SuppressWarnings("null")
 	public List<Lugar> listarTodos(){
 		String sql ="select * from lugar";
-		List<Lugar> lugares = null;
+		List<Lugar> lugares = new ArrayList<Lugar>();
 		try {
 			PreparedStatement stmt = this.conexao.prepareStatement(sql);
 			ResultSet rs = stmt.executeQuery();

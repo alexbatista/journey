@@ -1,4 +1,4 @@
-package com.webservice.server.bean;
+package com.webservice.client.bean;
 
 public class Visita {
 
