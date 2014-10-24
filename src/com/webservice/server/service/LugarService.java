@@ -2,8 +2,11 @@ package com.webservice.server.service;
 
 import java.util.List;
 
+import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -42,4 +45,36 @@ public class LugarService {
 		return Response.status(200).entity(llist.toString()).build();
 
 	}
+	
+	@POST
+	@Consumes(MediaType.APPLICATION_JSON)
+	public Response setLugar(JSONObject obj) throws JSONException{
+		LugarDao dao = new LugarDao();
+		Lugar lugar = new Lugar();
+		lugar.setNome(obj.getString("nome"));
+		lugar.setFoto(obj.getString("foto"));
+		lugar.setLatitude(obj.getDouble("latitude"));
+		lugar.setLongitude(obj.getDouble("longitude"));
+		
+		dao.adicionar(lugar);
+		return Response.status(200).build();
+	}
+	@Path("/{id}")
+	@GET
+	@Produces (MediaType.APPLICATION_JSON)
+	public Response getLugar(@PathParam("id") int id) throws JSONException{
+		
+		LugarDao lugarDao = new LugarDao();
+		Lugar lugar = lugarDao.listar(id);
+		
+		JSONObject json = new JSONObject();
+		json.put("id", lugar.getId());
+		json.put("nome", lugar.getNome());
+		json.put("foto", lugar.getFoto());
+		json.put("latitude", lugar.getLatitude());
+		json.put("longitude", lugar.getLongitude());
+		return Response.status(200).entity(json.toString()).build();
+	}
+	
+	
 }

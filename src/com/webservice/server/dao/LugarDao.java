@@ -72,19 +72,25 @@ public class LugarDao {
 	}
 	
 	public Lugar listar(int id){
-		String sql ="select * from usuario where id = ?";
-		Lugar usuario = new Lugar();
+		String sql ="select * from lugar where id = ?";
+		Lugar lugar = new Lugar();
 		try {
 			PreparedStatement stmt = this.conexao.prepareStatement(sql);
 			stmt.setInt(1, id);
 			ResultSet rs = stmt.executeQuery();
-			usuario.setId(rs.getInt("id"));
-			usuario.setNome(rs.getString("nome"));
-			
+			while(rs.next()){
+			lugar.setId(rs.getInt("id"));
+			lugar.setNome(rs.getString("nome"));
+			lugar.setFoto(rs.getString("foto"));
+			lugar.setLatitude(rs.getDouble("latitude"));
+			lugar.setLongitude(rs.getDouble("longitude"));
+			}
+			stmt.close();
+			rs.close();
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
 		}
-		return usuario;
+		return lugar;
 	}
 	
 	public void remover(Lugar lugar){
@@ -92,6 +98,7 @@ public class LugarDao {
 		try {
 			PreparedStatement stmt = this.conexao.prepareStatement(sql);
 			stmt.setInt(1, lugar.getId());
+			stmt.close();
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
 		}
