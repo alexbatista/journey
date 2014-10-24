@@ -13,6 +13,12 @@
 	</classpathentry>
 	<classpathentry exported="true" kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry exported="true" kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
-	<classpathentry exported="true" kind="lib" path="C:/Users/Alex Batista/workspace/journey/com.mysql.jdbc_5.1.5.jar"/>
+	<classpathentry exported="true" kind="lib" path="com.mysql.jdbc_5.1.5.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/Users/Alex Batista/work2/journey/WebContent/WEB-INF/lib/jersey-json.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/Users/Alex Batista/work2/journey/WebContent/WEB-INF/lib/asm-3.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/Users/Alex Batista/work2/journey/WebContent/WEB-INF/lib/jersey-bundle-1.18.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/Users/Alex Batista/work2/journey/WebContent/WEB-INF/lib/json-lib-0.9.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/Users/Alex Batista/work2/journey/WebContent/WEB-INF/lib/commons-io-2.4.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/Users/Alex Batista/work2/journey/WebContent/WEB-INF/lib/java-json.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

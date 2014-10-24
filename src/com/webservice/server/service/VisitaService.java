@@ -38,9 +38,9 @@ public class VisitaService {
 			array.put(jsonObj);
 		}
 		
-		JSONObject vlist = new JSONObject();
-		vlist.put("visitas",array);
-		return Response.status(200).entity(vlist.toString()).build();
+//		JSONObject vlist = new JSONObject();
+//		vlist.put("visitas",array);
+		return Response.status(200).entity(array.toString()).build();
 
 	}
 }

@@ -40,9 +40,9 @@ public class LugarService {
 			array.put(jsonObj);
 		}
 		
-		JSONObject llist = new JSONObject();
-		llist.put("lugares",array);
-		return Response.status(200).entity(llist.toString()).build();
+//		JSONObject llist = new JSONObject();
+//		llist.put("lugares",array);
+		return Response.status(200).entity(array.toString()).build();
 
 	}
 	
