@@ -3,8 +3,10 @@ package com.webservice.server.service;
 import java.util.List;
 
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -46,19 +48,6 @@ public class LugarService {
 
 	}
 	
-	@POST
-	@Consumes(MediaType.APPLICATION_JSON)
-	public Response setLugar(JSONObject obj) throws JSONException{
-		LugarDao dao = new LugarDao();
-		Lugar lugar = new Lugar();
-		lugar.setNome(obj.getString("nome"));
-		lugar.setFoto(obj.getString("foto"));
-		lugar.setLatitude(obj.getDouble("latitude"));
-		lugar.setLongitude(obj.getDouble("longitude"));
-		
-		dao.adicionar(lugar);
-		return Response.status(200).build();
-	}
 	@Path("/{id}")
 	@GET
 	@Produces (MediaType.APPLICATION_JSON)
@@ -75,6 +64,49 @@ public class LugarService {
 		json.put("longitude", lugar.getLongitude());
 		return Response.status(200).entity(json.toString()).build();
 	}
+	
+	@POST
+	@Consumes(MediaType.APPLICATION_JSON)
+	public Response setLugar(JSONObject obj) throws JSONException{
+		LugarDao dao = new LugarDao();
+		Lugar lugar = new Lugar();
+		lugar.setNome(obj.getString("nome"));
+		lugar.setFoto(obj.getString("foto"));
+		lugar.setLatitude(obj.getDouble("latitude"));
+		lugar.setLongitude(obj.getDouble("longitude"));
+		
+		dao.adicionar(lugar);
+		return Response.status(200).build();
+	}
+	
+	@PUT
+	@Consumes(MediaType.APPLICATION_JSON)
+	public Response updateLugar(JSONObject obj) throws JSONException{
+		LugarDao dao = new LugarDao();
+		Lugar lugar = new Lugar();
+		lugar.setId(obj.getInt("id"));
+		lugar.setNome(obj.getString("nome"));
+		lugar.setFoto(obj.getString("foto"));
+		lugar.setLatitude(obj.getDouble("latitude"));
+		lugar.setLongitude(obj.getDouble("longitude"));
+		
+		dao.atualizar(lugar);
+		return Response.status(200).build();
+	}
+	
+	@DELETE
+	@Consumes(MediaType.APPLICATION_JSON)
+	public Response removeLugar(JSONObject obj) throws JSONException{
+		LugarDao dao = new LugarDao();
+		Lugar lugar = new Lugar();
+		lugar.setId(obj.getInt("id"));
+		
+		dao.remover(lugar);
+		return Response.status(200).build();
+
+	}
+	
+
 	
 	
 }
