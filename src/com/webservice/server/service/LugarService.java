@@ -12,6 +12,7 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import javax.xml.bind.JAXBElement;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -67,15 +68,16 @@ public class LugarService {
 	
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
-	public Response setLugar(JSONObject obj) throws JSONException{
+	public Response setLugar(JAXBElement<Lugar> lugares) throws JSONException{
 		LugarDao dao = new LugarDao();
-		Lugar lugar = new Lugar();
-		lugar.setNome(obj.getString("nome"));
-		lugar.setFoto(obj.getString("foto"));
-		lugar.setLatitude(obj.getDouble("latitude"));
-		lugar.setLongitude(obj.getDouble("longitude"));
-		
+		Lugar lugar = lugares.getValue();
+//		lugar.setNome(obj.getString("nome"));
+//		lugar.setFoto(obj.getString("foto"));
+//		lugar.setLatitude(obj.getDouble("latitude"));
+//		lugar.setLongitude(obj.getDouble("longitude"));
+		System.out.println("entrou");
 		dao.adicionar(lugar);
+		
 		return Response.status(200).build();
 	}
 	
