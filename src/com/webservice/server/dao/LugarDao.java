@@ -93,11 +93,11 @@ public class LugarDao {
 		return lugar;
 	}
 	
-	public void remover(Lugar lugar){
+	public void remover(int id){
 		String sql = "DELETE FROM lugar WHERE id = ?";
 		try {
 			PreparedStatement stmt = this.conexao.prepareStatement(sql);
-			stmt.setInt(1, lugar.getId());
+			stmt.setInt(1,id);
 			stmt.close();
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
