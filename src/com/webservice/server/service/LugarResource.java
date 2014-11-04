@@ -57,7 +57,7 @@ public class LugarResource {
 	}
 	
 	@DELETE
-	@Path("{id}")
+	@Path("/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response removeLugar(@PathParam("id") int id) throws JSONException{
 		new LugarController().delete(id);

@@ -98,6 +98,7 @@ public class LugarDao {
 		try {
 			PreparedStatement stmt = this.conexao.prepareStatement(sql);
 			stmt.setInt(1,id);
+			stmt.execute();
 			stmt.close();
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
