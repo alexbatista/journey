@@ -47,12 +47,13 @@ public class LugarResource {
 		return Response.status(200).build();
 	}
 	
+	@Path("/{id}")
 	@PUT
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response updateLugar(Lugar lugar) throws JSONException{
+	public Response updateLugar(@PathParam("id") int id) throws JSONException{
 	
-		new LugarController().update(lugar);
+		new LugarController().update(id);
 		return Response.status(200).build();
 	}
 	

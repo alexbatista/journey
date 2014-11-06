@@ -34,12 +34,11 @@ public class LugarDao {
 		}
 	}
 	
-	public void atualizar(Lugar lugar){
+	public void atualizar(int id){
 		String sql ="UPDATE lugar SET nome = ?  WHERE id = ?";
 		try {
 			PreparedStatement stmt = this.conexao.prepareStatement(sql);
-			stmt.setString(1, lugar.getNome());
-			stmt.setInt(2, lugar.getId());
+			stmt.setInt(1,id);
 			stmt.execute();
 			stmt.close();
 		} catch (SQLException e) {
