@@ -11,9 +11,10 @@ public class Lugar {
 	@GeneratedValue
 	private int id;
 	private String nome;
-	private String foto;
 	private double latitude;
 	private double longitude;
+	private int classificacao;
+	private String descricao;
 	
 	public int getId() {
 		return id;
@@ -27,12 +28,6 @@ public class Lugar {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	public String getFoto() {
-		return foto;
-	}
-	public void setFoto(String foto) {
-		this.foto = foto;
-	}
 	public double getLatitude() {
 		return latitude;
 	}
@@ -44,6 +39,18 @@ public class Lugar {
 	}
 	public void setLongitude(double longitude) {
 		this.longitude = longitude;
+	}
+	public int getClassificacao() {
+		return classificacao;
+	}
+	public void setClassificacao(int classificacao) {
+		this.classificacao = classificacao;
+	}
+	public String getDescricao() {
+		return descricao;
+	}
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
 	}
 	
 	

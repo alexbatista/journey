@@ -19,13 +19,14 @@ public class LugarDao {
 	}
 
 	public void adicionar(Lugar lugar){
-		String sql = "insert into lugar (nome,foto,latitude,longitude) value(?,?,?,?)";
+		String sql = "insert into lugar (nome,latitude,longitude,classificacao,descricao) value(?,?,?,?,?)";
 		try {
 			PreparedStatement stmt = this.conexao.prepareStatement(sql);
 			stmt.setString(1, lugar.getNome());
-			stmt.setString(2, lugar.getFoto());
-			stmt.setDouble(3,lugar.getLatitude());
-			stmt.setDouble(4, lugar.getLongitude());
+			stmt.setDouble(2,lugar.getLatitude());
+			stmt.setDouble(3, lugar.getLongitude());
+			stmt.setInt(4, lugar.getClassificacao());
+			stmt.setString(5, lugar.getDescricao());
 			
 			stmt.execute();
 			stmt.close();
@@ -56,10 +57,10 @@ public class LugarDao {
 				Lugar lugar = new Lugar();
 				lugar.setId(rs.getInt("id"));
 				lugar.setNome(rs.getString("nome"));
-				lugar.setFoto(rs.getString("foto"));
 				lugar.setLatitude(rs.getDouble("latitude"));
 				lugar.setLongitude(rs.getDouble("longitude"));
-				
+				lugar.setClassificacao(rs.getInt("classificacao"));
+				lugar.setDescricao(rs.getString("descricao"));
 				lugares.add(lugar);
 			}
 			stmt.close();
@@ -80,9 +81,10 @@ public class LugarDao {
 			while(rs.next()){
 			lugar.setId(rs.getInt("id"));
 			lugar.setNome(rs.getString("nome"));
-			lugar.setFoto(rs.getString("foto"));
 			lugar.setLatitude(rs.getDouble("latitude"));
 			lugar.setLongitude(rs.getDouble("longitude"));
+			lugar.setClassificacao(rs.getInt("classificacao"));
+			lugar.setDescricao(rs.getString("descricao"));
 			}
 			stmt.close();
 			rs.close();

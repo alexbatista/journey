@@ -21,9 +21,10 @@ public class LugarController {
 			JSONObject jsonObj = new JSONObject();
 			jsonObj.put("id", v.getId());
 			jsonObj.put("nome", v.getNome());
-			jsonObj.put("foto", v.getFoto());
 			jsonObj.put("latitude", v.getLatitude());
 			jsonObj.put("longitude", v.getLongitude());
+			jsonObj.put("descricao", v.getDescricao());
+			jsonObj.put("classificacao", v.getClassificacao());
 			array.put(jsonObj);
 		}
 		return array;
@@ -36,10 +37,10 @@ public class LugarController {
 		JSONObject json = new JSONObject();
 		json.put("id", lugar.getId());
 		json.put("nome", lugar.getNome());
-		json.put("foto", lugar.getFoto());
 		json.put("latitude", lugar.getLatitude());
 		json.put("longitude", lugar.getLongitude());
-		
+		json.put("classificacao", lugar.getClassificacao());
+		json.put("descricao",lugar.getDescricao());
 		return json;
 	}
 	
