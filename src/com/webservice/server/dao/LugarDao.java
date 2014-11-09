@@ -35,11 +35,16 @@ public class LugarDao {
 		}
 	}
 	
-	public void atualizar(int id){
-		String sql ="UPDATE lugar SET nome = ?  WHERE id = ?";
+	public void atualizar(Lugar lugar){
+		String sql ="UPDATE lugar SET nome = ?, latitude = ?, longitude = ?, classificacao = ?, descricao = ?  WHERE id = ?";
 		try {
 			PreparedStatement stmt = this.conexao.prepareStatement(sql);
-			stmt.setInt(1,id);
+			stmt.setString(1, lugar.getNome());
+			stmt.setDouble(2, lugar.getLatitude());
+			stmt.setDouble(3, lugar.getLongitude());
+			stmt.setInt(4, lugar.getClassificacao());
+			stmt.setString(5, lugar.getDescricao());
+			stmt.setInt(6, lugar.getId());
 			stmt.execute();
 			stmt.close();
 		} catch (SQLException e) {
