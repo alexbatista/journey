@@ -49,9 +49,9 @@ public class LugarController {
 		dao.adicionar(lugar);		
 	}
 	
-	public void update(int id){
+	public void update(Lugar lugar){
 		LugarDao dao = new LugarDao();		
-		dao.atualizar(id);	
+		dao.atualizar(lugar);	
 	}
 	
 	public void delete(int id){
